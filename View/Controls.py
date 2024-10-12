@@ -1,4 +1,4 @@
-#MENUS
+# MENUS
 def mainMenu():
     print(f"{"-"*25}\n| Selecciona una Opcion |\n{"-"*25}")
     while True:
