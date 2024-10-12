@@ -10,43 +10,44 @@ class Estudiante(ABC):
         self.__serial = serial
     
     @abstractmethod
-    def getCed():
-        pass
+    def getCed(self):
+        return self.__ced
     
     @abstractmethod
-    def getNom():
-        pass
+    def getNom(self):
+        return self.__nom
     
     @abstractmethod
-    def getApe():
-        pass
+    def getApe(self):
+        return self.__ape
     
     @abstractmethod
-    def getTel():
-        pass    
+    def getTel(self):
+        return self.__tel
     
     @abstractmethod
-    def getSerial():
-        pass
+    def getSerial(self):
+        return self.__serial
     
     @abstractmethod
-    def setCed():
-        pass
+    def setCed(self, ced):
+        self.__ced = ced
     
     @abstractmethod
-    def setNom():
-        pass
+    def setNom(self, nom):
+        self.__nom = nom
     
     @abstractmethod
-    def setApe():
-        pass
+    def setApe(self, ape):
+        self.__ape = ape
     
     @abstractmethod
-    def setTel():
-        pass
-    
+    def setTel(self, tel):
+        self.__tel = tel
+        
     @abstractmethod
-    def setSerial():
-        pass
+    def setSerial(self, serial):
+        self.__serial = serial
+    
     
 
