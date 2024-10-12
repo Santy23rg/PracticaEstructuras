@@ -5,7 +5,7 @@ BDComp = {}
 BDEstIng = {}
 BDEstDis = {}
 
-#class Tablet():
+class Tablet():
     def __init__(self, serial, marca, tamano, precio, almac, peso, disp):
         self.__serial = serial
         self.__marca = marca
@@ -30,7 +30,8 @@ BDEstDis = {}
     def getDisp(self):
         return self.__disp
 
-with open('Model/Inv.txt', 'r', encoding='utf-8') as archivo:
+### Importacion de datos de inventario de Computadores
+with open('Model/InvTablet.txt', 'r', encoding='utf-8') as archivo:
     datos = {}
     # Lee el contenido del archivo
     for linea in archivo:
@@ -56,7 +57,59 @@ with open('Model/Inv.txt', 'r', encoding='utf-8') as archivo:
             continue
         dato = text.split(":")
         datos.update({dato[0] : dato[1]})
-    
-
-    
         
+        
+class Computador():
+    def __init__(self, serial, marca, tamano, precio, sist, proce, disp):
+        self.__serial = serial
+        self.__marca = marca
+        self.__tamano = tamano
+        self.__precio = precio
+        self.__sist = sist
+        self.__proce = proce
+        self.__disp = disp
+    
+    def getSerial(self):
+        return self.__serial
+    def getMarca(self):
+        return self.__marca
+    def getTamano(self):
+        return self.__tamano
+    def getPrecio(self):
+        return self.__precio
+    def getSist(self):
+        return self.__sist
+    def getProce(self):
+        return self.__proce
+    def getDisp(self):
+        return self.__disp   
+    
+# Importacion de datos de inventario de Computadores
+with open ('Model/InvComp.txt', 'r', encoding='utf-8') as archivo:
+    datos = {}
+    # Lee el contenido del archivo
+    for linea in archivo:
+        text = linea.strip()
+        if '-' in text:
+            serial = datos['serial']
+            marca = datos['marca']
+            tamano = datos['tamaño']
+            precio = datos['precio']
+            sistema = datos['sistema']
+            procesador = datos['procesador']
+            disp = True if datos['disp'].lower().strip() == "disponible" else False
+            comp = Computador(serial, marca, tamano, precio, sistema, procesador, disp)
+            BDComp.update({comp.getSerial() : {
+                "marca" : comp.getMarca(),
+                "tamaño" : comp.getTamano(),
+                "precio" : comp.getPrecio(),
+                "sistema" : comp.getSist(),
+                "procesador" : comp.getProce(),
+                "disp" : comp.getDisp(),
+            }})
+            datos = {}
+            continue
+        dato = text.split(":")
+        datos.update({dato[0] : dato[1]})
+
+

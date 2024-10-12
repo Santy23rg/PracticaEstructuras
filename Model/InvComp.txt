@@ -1,0 +1,32 @@
+serial:0001
+marca:LG
+tamaño:10 pulgadas
+precio:21000
+sistema: Windows 11
+procesador: Intel Core i5
+disp: Disponible
+-------------
+serial:0002
+marca:Huawei
+tamaño:12 pulgadas
+precio:15000
+sistema: Windows 7
+procesador: AMD Ryzen
+disp: Disponible
+------------
+serial:0003
+marca:Toshiba
+tamaño:15 pulgadas
+precio:35000
+sistema: Windows 10
+procesador: AMD Ryzen
+disp: Disponible
+------------
+serial:0004
+marca:Samsung
+tamaño:10 pulgadas
+precio:40000
+sistema: Windows 11
+procesador: Intel Core i5
+disp: Disponible
+------------
