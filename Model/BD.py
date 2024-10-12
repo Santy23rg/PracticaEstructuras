@@ -1,4 +1,10 @@
 import Tablet
+from pathlib import Path
+import sys
+
+current_dir = Path(__file__).parent
+compArch = current_dir / "InvComp.txt"
+tabletArch = current_dir / "InvTablet.txt"
 
 BDTablet = {}
 BDComp = {}
@@ -31,7 +37,7 @@ class Tablet():
         return self.__disp
 
 ### Importacion de datos de inventario de Computadores
-with open('Model/InvTablet.txt', 'r', encoding='utf-8') as archivo:
+with open(tabletArch, 'r', encoding='utf-8') as archivo:
     datos = {}
     # Lee el contenido del archivo
     for linea in archivo:
@@ -85,7 +91,7 @@ class Computador():
         return self.__disp   
     
 # Importacion de datos de inventario de Computadores
-with open ('Model/InvComp.txt', 'r', encoding='utf-8') as archivo:
+with open (compArch, 'r', encoding='utf-8') as archivo:
     datos = {}
     # Lee el contenido del archivo
     for linea in archivo:
@@ -111,5 +117,6 @@ with open ('Model/InvComp.txt', 'r', encoding='utf-8') as archivo:
             continue
         dato = text.split(":")
         datos.update({dato[0] : dato[1]})
+
 
 
