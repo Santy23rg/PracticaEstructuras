@@ -1,40 +1,39 @@
 from abc import ABC, abstractmethod
 
 class Dispositivo(ABC):
-    def __init__(self, serial, marc, tam, prec):
-        self.__serial = serial
-        self.__marc = marc
-        self.__tam = tam
-        self.__prec = prec
+    def __init__(self, serial, marca, tamano, precio, disp):
+        self._serial = serial
+        self._marca = marca
+        self._tamano = tamano
+        self._precio = precio
+        self._disp = disp
 
-@abstractmethod
-def getSerial():
-    pass
+    def getSerial(self):
+        return self._serial
 
-@abstractmethod
-def getMarc():
-    pass
+    def getMarca(self):
+        return self._marca
 
-@abstractmethod
-def getTam():
-    pass
+    def getTamano(self):
+        return self._tamano
+        
+    def getPrecio(self):
+        return self._precio
 
-@abstractmethod
-def getPrec():
-    pass
+    def getDisp(self):
+        return self._disp
 
-@abstractmethod
-def setSerial():
-    pass
+    def setSerial(self, serial):
+        self._serial=serial
 
-@abstractmethod
-def setMarc():
-    pass
+    def setMarca(self, marca):
+        self._marca=marca
 
-@abstractmethod
-def setTam():
-    pass
+    def setTamano(self, tamano):
+        self._tamano=tamano
+    
+    def setPrecio(self, precio):
+        self._precio=precio
 
-@abstractmethod
-def setPrec():
-    pass
+    def setDisp(self, disp):
+        self._disp=disp
