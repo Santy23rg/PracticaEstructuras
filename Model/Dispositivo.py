@@ -1,13 +1,14 @@
 from abc import ABC, abstractmethod
 
 class Dispositivo(ABC):
+    ##conjunto de atributos a heredar
     def __init__(self, serial, marca, tamano, precio, disp):
         self._serial = serial
         self._marca = marca
         self._tamano = tamano
         self._precio = precio
         self._disp = disp
-
+    ##conjunto de métodos a heredar
     def getSerial(self):
         return self._serial
 
