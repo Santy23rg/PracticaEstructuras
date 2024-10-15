@@ -1,4 +1,6 @@
 from Controls import *
+from PracticaEstructuras.Model.EstudianteDis import EstudianteDis
+
 
 while True:
     respuesta = mainMenu()

@@ -1,6 +1,7 @@
 # MENUS
+
 def mainMenu():
-    print(f"{"-"*25}\n| Selecciona una Opcion |\n{"-"*25}")
+    print(f"{'-'*25}\n| Selecciona una Opcion |\n{'-'*25}")
     while True:
         try:
             respuesta = int(input("1. Ingenieria \n2. Diseño\n3. Imprimir Inventario\n4. Salir del Programa\n"))
