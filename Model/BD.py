@@ -1,4 +1,6 @@
-import Tablet
+from Tablet import *
+from Computador import *
+
 from pathlib import Path
 import sys
 
@@ -11,32 +13,7 @@ BDComp = {}
 BDEstIng = {}
 BDEstDis = {}
 
-class Tablet():
-    def __init__(self, serial, marca, tamano, precio, almac, peso, disp):
-        self.__serial = serial
-        self.__marca = marca
-        self.__tamano = tamano
-        self.__precio = precio
-        self.__almac = almac
-        self.__peso = peso
-        self.__disp = disp
-    
-    def getSerial(self):
-        return self.__serial
-    def getMarca(self):
-        return self.__marca
-    def getTamano(self):
-        return self.__tamano
-    def getPrecio(self):
-        return self.__precio
-    def getAlmac(self):
-        return self.__almac
-    def getPeso(self):
-        return self.__peso
-    def getDisp(self):
-        return self.__disp
-
-### Importacion de datos de inventario de Computadores
+### Importacion de datos de inventario de Tablets
 with open(tabletArch, 'r', encoding='utf-8') as archivo:
     datos = {}
     # Lee el contenido del archivo
@@ -63,32 +40,6 @@ with open(tabletArch, 'r', encoding='utf-8') as archivo:
             continue
         dato = text.split(":")
         datos.update({dato[0] : dato[1]})
-        
-        
-class Computador():
-    def __init__(self, serial, marca, tamano, precio, sist, proce, disp):
-        self.__serial = serial
-        self.__marca = marca
-        self.__tamano = tamano
-        self.__precio = precio
-        self.__sist = sist
-        self.__proce = proce
-        self.__disp = disp
-    
-    def getSerial(self):
-        return self.__serial
-    def getMarca(self):
-        return self.__marca
-    def getTamano(self):
-        return self.__tamano
-    def getPrecio(self):
-        return self.__precio
-    def getSist(self):
-        return self.__sist
-    def getProce(self):
-        return self.__proce
-    def getDisp(self):
-        return self.__disp   
     
 # Importacion de datos de inventario de Computadores
 with open (compArch, 'r', encoding='utf-8') as archivo:
