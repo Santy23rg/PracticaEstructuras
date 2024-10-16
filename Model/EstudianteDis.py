@@ -30,37 +30,17 @@ class EstudianteDis(Estudiante):  # Hereda de Estudiante
         self.__modEst = modEst  # Variable para modalidad de estudio
         self.__cantAsig = cantAsig  # Variable para cantidad de asignaturas
 
-    # Implementación de métodos abstractos
-    def getCed(self):
-        return super().getCed()
+    def getMod(self):
+        return self.__modEst
+    
+    def getCantAsig(self):
+        return self.__cantAsig
+    
+    def setMod(self, mod):
+        self.__modEst = mod
 
-    def getNom(self):
-        return super().getNom()
-
-    def getApe(self):
-        return super().getApe()
-
-    def getTel(self):
-        return super().getTel()
-
-    def getSerial(self):
-        return super().getSerial()
-
-    def setCed(self, ced):
-        super().setCed(ced)
-
-    def setNom(self, nom):
-        super().setNom(nom)
-
-    def setApe(self, ape):
-        super().setApe(ape)
-
-    def setTel(self, tel):
-        super().setTel(tel)
-
-    def setSerial(self, serial):
-        super().setSerial(serial)
-
+    def setCantAsig(self, cant):
+        self.__cantAsig = cant
     
             
 
@@ -85,5 +65,7 @@ class EstudianteDis(Estudiante):  # Hereda de Estudiante
 
     def BuscarEquipo(self):
         pass
-estudiante1 = EstudianteDis("", "", "", "", "", 0, "")
-estudiante1.RegistrarPrestamo()
+est1 = EstudianteDis("s", "a", "b", "c", "d", 0, "r")
+#estudiante1.RegistrarPrestamo()
+
+print(est1.getCed())
