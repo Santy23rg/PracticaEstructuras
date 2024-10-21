@@ -1,3 +1,16 @@
+from pathlib import Path
+import sys
+
+current_dir = Path(__file__).parent
+
+model_path = current_dir / '../Model'
+controller_path = current_dir / '../Controller'
+
+sys.path.append(str(model_path))
+sys.path.append(str(controller_path))
+
+from EstDisController import *
+from TabletController import * 
 # MENUS
 
 def mainMenu():
@@ -31,3 +44,12 @@ def SecMenu():
             print("¡Porfavor ingrese una opcion valida! \n")
         
     return respuesta
+
+def registrarPrestamoDis():
+    disp = TabletController.ListarDisp()
+    if disp != []:
+        result = EstDisController.registrarPrestamo()
+        print(result)
+    else:
+        print("\nLo siento no contamos con Tablets disponibles, intenta mas tarde\n")
+    

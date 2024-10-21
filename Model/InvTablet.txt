@@ -1,32 +1,32 @@
-serial:0001
-marca:lenovo
-tamaño:18 pulgadas
-precio:12000
-almacenamiento: 8 GB
-peso:3 Kg
-disp: Disponible
--------------
-serial:0002
-marca:Hp
-tamaño:12 pulgadas
-precio:8000
-almacenamiento:4 GB
-peso:1,6 Kg
-disp: Disponible
-------------
-serial:0003
-marca:Asus
-tamaño:15 pulgadas
-precio:20000
-almacenamiento:16 GB
-peso:2 Kg
-disp: Disponible
-------------
-serial:0004
-marca:Mac
-tamaño:10 pulgadas
-precio:14000
-almacenamiento:8 GB
+serial: 0001
+marca: lenovo
+tamaño: 18 pulgadas
+precio: 12000
+almacenamiento: 256 GB
+peso: 3 Kg
+disp: disponible
+--------------
+serial: 0002
+marca: Hp
+tamaño: 12 pulgadas
+precio: 8000
+almacenamiento: 1 TB
+peso: 1,6 Kg
+disp: disponible
+--------------
+serial: 0003
+marca: Asus
+tamaño: 15 pulgadas
+precio: 20000
+almacenamiento: 512 GB
+peso: 2 Kg
+disp: disponible
+--------------
+serial: 0004
+marca: Mac
+tamaño: 10 pulgadas
+precio: 14000
+almacenamiento: 216 GB
 peso: 2,5Kg
-disp: Disponible
-------------
+disp: disponible
+--------------
