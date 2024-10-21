@@ -1,6 +1,4 @@
-from abc import ABC, abstractmethod
-
-class Dispositivo(ABC):
+class Dispositivo():
     ##conjunto de atributos a heredar
     def __init__(self, serial, marca, tamano, precio, disp):
         self._serial = serial

@@ -1,5 +1,4 @@
 from Controls import *
-from PracticaEstructuras.Model.EstudianteDis import EstudianteDis
 
 
 while True:
@@ -24,7 +23,7 @@ while True:
     elif respuesta == 2:
         respuesta = SecMenu()
         if respuesta == 1:
-            pass
+            registrarPrestamoDis()
         elif respuesta == 2:
             pass
         elif respuesta == 3:

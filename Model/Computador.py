@@ -19,6 +19,4 @@ class Computador(Dispositivo):
     def setProce(self,proce):
         self._proce=proce
     
-##esto es solo una prueba de funcionamiento  
-dis = Computador("001","s","10","11","a","z",True)
-print(dis.getDisp())
+
