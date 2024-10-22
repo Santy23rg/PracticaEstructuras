@@ -146,7 +146,7 @@ def validar(frase="", dato="str"):
                         opcion.append([index, i.getSerial()])
                         index += 1
                     respuesta = validar(dato="int")
-                    if int(respuesta) in range(1,index+1):
+                    if int(respuesta) in range(1,index):
                         for i in opcion:
                             if i[0] == int(respuesta):
                                 result = i[1]
@@ -209,7 +209,7 @@ def actualizarArchivo(BDTablet):
             archivo.write(f"precio: {item.getPrecio()}\n")
             archivo.write(f"almacenamiento: {item.getAlmac()}\n")
             archivo.write(f"peso: {item.getPeso()}\n")
-            archivo.write(f"disp: {"disponible" if item.getDisp() else False}\n")
+            archivo.write(f"disp: {'disponible' if item.getDisp() else False}\n")
             archivo.write(f"--------------\n")
             
 def validarPrestamo(cc, tipoEst):
