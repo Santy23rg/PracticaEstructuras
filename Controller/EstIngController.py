@@ -18,3 +18,15 @@ class EstIngController():
             return "\nPrestamo Registrado Correctamente\n"
         else:
             return "\nEste estudiante ya tiene un prestamo en la facultad, debe devolverlo antes de poder hacer otro prestamo\n"
+        
+    def buscarEquipo(dato):
+        pass
+        # for i in BDEstIng:
+        #     if i.getCed() == dato or i.getSerial() == dato:
+        #         serial = i.getSerial()
+        #         print(f"\nPRESTAMO\nCC: {i.getCed()}\nNombre: {i.getNom()}")
+        #         break
+        # for i in BDComp:
+        #     if i.getSerial() == dato:
+        #         print(f"Marca: {i.getMarca()}\nSistema: {i.getSist()}\nProcesador: {i.getProce()}")
+        #         break

@@ -10,7 +10,9 @@ sys.path.append(str(model_path))
 sys.path.append(str(controller_path))
 
 from EstDisController import *
+from EstIngController import *
 from TabletController import * 
+from CompController import * 
 # MENUS
 
 def mainMenu():
@@ -52,4 +54,15 @@ def registrarPrestamoDis():
         print(result)
     else:
         print("\nLo siento no contamos con Tablets disponibles, intenta mas tarde\n")
-    
+        
+def registrarPrestamoIng():
+    disp = CompController.ListarDisp()
+    if disp != []:
+        result = EstIngController.registrarPrestamo()
+        print(result)
+    else:
+        print("\nLo siento no contamos con Computadores disponibles, intenta mas tarde\n")
+
+def buscarEquipoIng():
+    dato = input("Ingrese CC del estudiante o Serial del equipo:\n")
+    EstIngController.buscarEquipo(dato)

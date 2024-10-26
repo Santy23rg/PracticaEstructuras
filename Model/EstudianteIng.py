@@ -1,5 +1,4 @@
-import Estudiante
-
+from Estudiante import Estudiante
 
 class EstudianteIng(Estudiante):
     def __init__(self, ced, nom, ape, tel, semestre, promedio, serial):
@@ -7,16 +6,11 @@ class EstudianteIng(Estudiante):
         self.__semestre=semestre
         self.__promedio=promedio
 
-    def RegistrarPrestamo():
-        pass
-
-    def ModificarPrestamo():
-        pass
-
-    def Devolucion():
-        pass
-
-    def BuscarEquipo():
-        pass
+    def getSem(self):
+        return self.__semestre
+    
+    def getProm(self):
+        return self.__promedio
+       
 
     

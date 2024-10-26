@@ -1,0 +1,16 @@
+CC: 123
+nombre: san
+apellido: rol
+telefono: 444
+semestre: 6
+promedio: 7
+serial: 0002
+--------------
+CC: 22
+nombre: david
+apellido: cano
+telefono: 444
+semestre: 5
+promedio: 6
+serial: 0004
+--------------

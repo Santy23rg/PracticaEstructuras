@@ -9,13 +9,13 @@ while True:
         
         respuesta = SecMenu()
         if respuesta == 1:
-            pass
+            registrarPrestamoIng()
         elif respuesta == 2:
             pass
         elif respuesta == 3:
             pass
         elif respuesta == 4:
-            pass
+            buscarEquipoIng()
         elif respuesta == 5:
             continue
         

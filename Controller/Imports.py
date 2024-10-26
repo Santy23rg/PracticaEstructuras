@@ -12,5 +12,6 @@ controller_path = current_dir / '../Controller'
 sys.path.append(str(model_path))
 
 from EstudianteDis import EstudianteDis
+from EstudianteIng import *
 from Tablet import *
 from BD import *

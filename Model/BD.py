@@ -9,6 +9,7 @@ tabletArch = current_dir / "InvTablet.txt"
 controller_path = current_dir / '../Controller'
 model_path = current_dir / '../Model'
 pathEstDis = model_path / "EstDis.txt"
+pathEstIng = model_path / "EstIng.txt"
 
 #Agregacion de rutas al sys
 sys.path.append(str(controller_path))
@@ -16,7 +17,6 @@ sys.path.append(str(model_path))
 ##################################
 from Tablet import * 
 from Computador import * 
-from CompController import * 
 from EstudianteDis import EstudianteDis 
 
 BDTablet = []
@@ -26,6 +26,7 @@ BDEstDis = []
 
 
 def actualizarBDEstDis():
+    BDEstDis.clear()
     with open(pathEstDis, "r") as archivo:
         datos = {}
         for linea in archivo:
@@ -46,6 +47,30 @@ def actualizarBDEstDis():
             datos.update({dato[0] : dato[1].strip()})
 
 actualizarBDEstDis()
+
+def actualizarBDEstIng():
+    BDEstIng.clear()
+    with open(pathEstIng, "r") as archivo:
+        datos = {}
+        for linea in archivo:
+            text = linea.strip()
+            if '-' in text:
+                cc = datos['CC']
+                nombre = datos['nombre']
+                apellido = datos['apellido']
+                telefono = datos['telefono']
+                semestre = datos['semestre']
+                promedio = datos['promedio']
+                serial = datos['serial']
+                EstIng = EstudianteDis(cc, nombre, apellido, telefono, semestre, promedio, serial)
+                BDEstIng.append(EstIng)
+                datos = {}
+                continue
+            dato = text.split(":")
+            datos.update({dato[0] : dato[1].strip()})
+
+actualizarBDEstIng()
+            
 ### Importacion de datos de inventario de Tablets
 with open(tabletArch, 'r', encoding='utf-8') as archivo:
     datos = {}
@@ -157,31 +182,46 @@ def validar(frase="", dato="str"):
                 except:
                     print(f"El dato ingresado no es válido, intente nuevamente!")
         
-        # elif dato == "comp":
-        #     while True:
-        #         try:
-        #             from CompController import CompController
-        #             print("\nDe cuanto almacenamiento desea su tablet?\nDisponibles:")
-        #             disponibles = CompController.ListarDisp()
-        #             for i in BDComp:
-        #                 print(i.getDisp())
-        #             index = 1
-        #             opcion = []
-        #             for i in disponibles:
-        #                 print(f"{index}) {i.getAlmac()}")
-        #                 opcion.append([index, i.getSerial()])
-        #                 index += 1
-        #             respuesta = validar(dato="int")
-        #             if int(respuesta) in range(1,index+1):
-        #                 for i in opcion:
-        #                     if i[0] == int(respuesta):
-        #                         result = i[1]
-        #                         return result
-        #             else:
-        #                 print("Escoja una opcion dentro del rango")
-        #                 continue
-        #         except:
-        #             print(f"El dato ingresado no es válido, intente nuevamente!")    
+        elif dato == "comp":
+            result = []
+            while True:
+                try:
+                    from CompController import CompController
+                    print("\nSeleccione el sistema operativo de su computador\nDisponibles:")
+                    disponibles = CompController.ListarDisp()
+                    index = 1
+                    opcion = []
+                    for i in disponibles:
+                        print(f"{index}) {i}")
+                        opcion.append([index, i])
+                        index += 1
+                    respuesta = validar(dato="int")
+                    if int(respuesta) in range(1,index):
+                        for i in opcion:
+                            if i[0] == int(respuesta):
+                                result=i[1]
+                        index = 1
+                        opcion = []
+                        print("Escoja el procesador de su computador")
+                        for k in BDComp:
+                            if k.getSist() == result and k.getDisp():
+                                print(f"{index}) {k.getProce()}")
+                                opcion.append([index, k.getSerial()])
+                                index += 1
+                        respuesta = validar(dato="int")
+                        if int(respuesta) in range(1,index):
+                            for i in opcion:
+                                if i[0] == int(respuesta):
+                                    result = i[1]
+                            return result
+                        else:
+                            print("Escoja una opcion dentro del rango")
+                            continue
+                    else:
+                        print("Escoja una opcion dentro del rango")
+                        continue
+                except:
+                    print(f"El dato ingresado no es válido, intente nuevamente!")    
 
 def registrarEstDis(estudiante):
     path = model_path / "EstDis.txt"
@@ -190,6 +230,7 @@ def registrarEstDis(estudiante):
         archivo.write(f"nombre: {estudiante.getNom()}\n")
         archivo.write(f"apellido: {estudiante.getApe()}\n")
         archivo.write(f"telefono: {estudiante.getTel()}\n")
+      
         archivo.write(f"modalidad: {estudiante.getMod()}\n")
         archivo.write(f"asignaturas: {estudiante.getCantAsig()}\n")
         archivo.write(f"serial: {estudiante.getSerial()}\n")
@@ -197,10 +238,28 @@ def registrarEstDis(estudiante):
         for item in BDTablet:
             if estudiante.getSerial() == item.getSerial():
                 item.setDisp(False)
-        actualizarArchivo(BDTablet)
-    actualizarBDEstDis()        
-                
-def actualizarArchivo(BDTablet):
+        actualizarArchivoT(BDTablet)
+    actualizarBDEstDis()  
+    
+def registrarEstIng(estudiante):
+    path = model_path / "EstIng.txt"
+    with open(path, 'a') as archivo:
+        archivo.write(f"CC: {estudiante.getCed()}\n")
+        archivo.write(f"nombre: {estudiante.getNom()}\n")
+        archivo.write(f"apellido: {estudiante.getApe()}\n")
+        archivo.write(f"telefono: {estudiante.getTel()}\n")
+        archivo.write(f"semestre: {estudiante.getSem()}\n")
+        archivo.write(f"promedio: {estudiante.getProm()}\n")
+        archivo.write(f"serial: {estudiante.getSerial()}\n")
+        archivo.write(f"--------------\n")
+        for item in BDComp:
+            if estudiante.getSerial() == item.getSerial():
+                item.setDisp(False)
+        actualizarArchivoC(BDComp)
+    actualizarBDEstIng()        
+
+# ACTUALIZAR ARCHIVO DE TABLETS
+def actualizarArchivoT(BDTablet):
     with open(tabletArch, 'w', encoding='utf-8') as archivo:
         for item in BDTablet:
             archivo.write(f"serial: {item.getSerial()}\n")
@@ -209,6 +268,19 @@ def actualizarArchivo(BDTablet):
             archivo.write(f"precio: {item.getPrecio()}\n")
             archivo.write(f"almacenamiento: {item.getAlmac()}\n")
             archivo.write(f"peso: {item.getPeso()}\n")
+            archivo.write(f"disp: {'disponible' if item.getDisp() else False}\n")
+            archivo.write(f"--------------\n")
+
+# ACTUALIZAR ARCHIVO DE COMPUTADORES
+def actualizarArchivoC(BDComp):
+    with open(compArch, 'w', encoding='utf-8') as archivo:
+        for item in BDComp:
+            archivo.write(f"serial: {item.getSerial()}\n")
+            archivo.write(f"marca: {item.getMarca()}\n")
+            archivo.write(f"tamaño: {item.getTamano()}\n")
+            archivo.write(f"precio: {item.getPrecio()}\n")
+            archivo.write(f"sistema: {item.getSist()}\n")
+            archivo.write(f"procesador: {item.getProce()}\n")
             archivo.write(f"disp: {'disponible' if item.getDisp() else False}\n")
             archivo.write(f"--------------\n")
             
