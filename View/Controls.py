@@ -66,3 +66,8 @@ def registrarPrestamoIng():
 def buscarEquipoIng():
     dato = input("Ingrese CC del estudiante o Serial del equipo:\n")
     EstIngController.buscarEquipo(dato)
+
+def devolverPestamo2():
+    result = EstDisController.devolverPrestamo()
+    print(result)
+
