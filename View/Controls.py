@@ -52,4 +52,8 @@ def registrarPrestamoDis():
         print(result)
     else:
         print("\nLo siento no contamos con Tablets disponibles, intenta mas tarde\n")
-    
+
+
+def devolverPestamo2():
+    result = EstDisController.devolverPrestamo()
+    print(result)

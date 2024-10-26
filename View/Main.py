@@ -27,7 +27,7 @@ while True:
         elif respuesta == 2:
             pass
         elif respuesta == 3:
-            pass
+            devolverPestamo2()
         elif respuesta == 4:
             pass
         elif respuesta == 5:

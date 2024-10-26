@@ -26,6 +26,7 @@ BDEstDis = []
 
 
 def actualizarBDEstDis():
+    BDEstDis.clear()
     with open(pathEstDis, "r") as archivo:
         datos = {}
         for linea in archivo:
@@ -218,7 +219,7 @@ def validarPrestamo(cc, tipoEst):
             return True
         else:
             for i in BDEstDis:
-                if i.getCed() == cc:
+                if i.getCed() == cc or i.getSerial() == cc:
                     return False
             return True
     else:
@@ -226,6 +227,22 @@ def validarPrestamo(cc, tipoEst):
             return True
         else:
             for i in BDEstIng:
-                if i.getCed() == cc:
+                if i.getCed() == cc or i.getSerial() == cc:
                     return False
             return True
+        
+def sobreEscribirBDEstDis(serial):
+    with open(pathEstDis, 'w') as archivo:  # 'w' para sobreescribir el archivo
+        for estudiante in BDEstDis:
+            archivo.write(f"CC: {estudiante.getCed()}\n")
+            archivo.write(f"nombre: {estudiante.getNom()}\n")
+            archivo.write(f"apellido: {estudiante.getApe()}\n")
+            archivo.write(f"telefono: {estudiante.getTel()}\n")
+            archivo.write(f"modalidad: {estudiante.getMod()}\n")
+            archivo.write(f"asignaturas: {estudiante.getCantAsig()}\n")
+            archivo.write(f"serial: {estudiante.getSerial()}\n")
+            archivo.write(f"--------------\n")
+        for i in BDTablet:
+            if i.getSerial() == serial:
+                i.setDisp("disponible") 
+        actualizarArchivo(BDTablet)
