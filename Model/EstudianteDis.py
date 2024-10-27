@@ -17,7 +17,3 @@ class EstudianteDis(Estudiante):  # Hereda de Estudiante
 
     def setCantAsig(self, cant):
         self.__cantAsig = cant
-    
-            
-
-    
