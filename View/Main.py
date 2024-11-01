@@ -11,9 +11,9 @@ while True:
         if respuesta == 1:
             registrarPrestamoIng()
         elif respuesta == 2:
-            pass
+            modificarPrestamoIng()
         elif respuesta == 3:
-            pass
+            devolverPestamoIng()
         elif respuesta == 4:
             buscarEquipoIng()
         elif respuesta == 5:
@@ -25,9 +25,9 @@ while True:
         if respuesta == 1:
             registrarPrestamoDis()
         elif respuesta == 2:
-            pass
+            modificarPrestamoDis()
         elif respuesta == 3:
-            devolverPestamo2()
+            devolverPestamoDis()
         elif respuesta == 4:
             pass
         elif respuesta == 5:

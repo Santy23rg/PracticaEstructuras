@@ -1,8 +1,16 @@
-CC: 100
-nombre: juan
-apellido: orz
-telefono: 300
+CC: 123
+nombre: san
+apellido: rol
+telefono: 444
+semestre: 6
+promedio: 7
+serial: 0002
+--------------
+CC: 22
+nombre: david
+apellido: cano
+telefono: 444
 semestre: 5
-promedio: 5
+promedio: 5.0
 serial: 0001
 --------------

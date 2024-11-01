@@ -18,6 +18,7 @@ sys.path.append(str(model_path))
 from Tablet import * 
 from Computador import * 
 from EstudianteDis import EstudianteDis 
+from EstudianteIng import EstudianteIng 
 
 BDTablet = []
 BDComp = []
@@ -62,7 +63,7 @@ def actualizarBDEstIng():
                 semestre = datos['semestre']
                 promedio = datos['promedio']
                 serial = datos['serial']
-                EstIng = EstudianteDis(cc, nombre, apellido, telefono, semestre, promedio, serial)
+                EstIng = EstudianteIng(cc, nombre, apellido, telefono, semestre, promedio, serial)
                 BDEstIng.append(EstIng)
                 datos = {}
                 continue
@@ -133,6 +134,16 @@ def validar(frase="", dato="str"):
                     return str(data)
                 except:
                     print("El dato ingresado no es valido, Intente Nuevamente!")
+    # Validación de datos flotantes                
+        elif dato == "flo":
+            while True:
+                try:
+                    data = input(f"\n{frase}")
+                    data_float = float(data)
+                    assert data_float > 0 and data_float <= 5
+                    return str(data_float)
+                except:
+                    print("El dato ingresado no es valido, Intente Nuevamente!")            
     #Validacion para ingreso de semestre
         elif dato == "sem":
             while True:
@@ -303,7 +314,7 @@ def validarPrestamo(cc, tipoEst):
             return True
         
 def sobreEscribirBDEstDis(serial):
-    with open(pathEstDis, 'w') as archivo:  # 'w' para sobreescribir el archivo
+    with open(pathEstDis, 'w') as archivo:
         for estudiante in BDEstDis:
             archivo.write(f"CC: {estudiante.getCed()}\n")
             archivo.write(f"nombre: {estudiante.getNom()}\n")
@@ -317,3 +328,43 @@ def sobreEscribirBDEstDis(serial):
             if i.getSerial() == serial:
                 i.setDisp("disponible") 
         actualizarArchivoT(BDTablet)
+
+def sobreEscribirMod():
+    with open(pathEstDis, 'w') as archivo:
+        for estudiante in BDEstDis:
+            archivo.write(f"CC: {estudiante.getCed()}\n")
+            archivo.write(f"nombre: {estudiante.getNom()}\n")
+            archivo.write(f"apellido: {estudiante.getApe()}\n")
+            archivo.write(f"telefono: {estudiante.getTel()}\n")
+            archivo.write(f"modalidad: {estudiante.getMod()}\n")
+            archivo.write(f"asignaturas: {estudiante.getCantAsig()}\n")
+            archivo.write(f"serial: {estudiante.getSerial()}\n")
+            archivo.write(f"--------------\n")
+
+def sobreEscribirBDEstIng(serial):
+    with open(pathEstIng, 'w') as archivo:
+        for estudiante in BDEstIng:
+            archivo.write(f"CC: {estudiante.getCed()}\n")
+            archivo.write(f"nombre: {estudiante.getNom()}\n")
+            archivo.write(f"apellido: {estudiante.getApe()}\n")
+            archivo.write(f"telefono: {estudiante.getTel()}\n")
+            archivo.write(f"semestre: {estudiante.getSem()}\n")
+            archivo.write(f"promedio: {estudiante.getProm()}\n")
+            archivo.write(f"serial: {estudiante.getSerial()}\n")
+            archivo.write(f"--------------\n")
+        for i in BDComp:
+            if i.getSerial() == serial:
+                i.setDisp("disponible") 
+        actualizarArchivoC(BDComp)
+
+def sobreEscribirMod2():
+    with open(pathEstIng, 'w') as archivo:
+        for estudiante in BDEstIng:
+            archivo.write(f"CC: {estudiante.getCed()}\n")
+            archivo.write(f"nombre: {estudiante.getNom()}\n")
+            archivo.write(f"apellido: {estudiante.getApe()}\n")
+            archivo.write(f"telefono: {estudiante.getTel()}\n")
+            archivo.write(f"semestre: {estudiante.getSem()}\n")
+            archivo.write(f"promedio: {estudiante.getProm()}\n")
+            archivo.write(f"serial: {estudiante.getSerial()}\n")
+            archivo.write(f"--------------\n")

@@ -11,6 +11,9 @@ class EstudianteIng(Estudiante):
     
     def getProm(self):
         return self.__promedio
-       
-
     
+    def setSem(self, sem):
+        self.__semestre = sem
+        
+    def setProm(self, prom):
+        self.__promedio = prom
