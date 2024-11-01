@@ -4,7 +4,7 @@ tamaño: 10 pulgadas
 precio: 21000
 sistema: Windows 11
 procesador: Intel Core i5
-disp: disponible
+disp: False
 --------------
 serial: 0002
 marca: Huawei
@@ -12,7 +12,7 @@ tamaño: 12 pulgadas
 precio: 15000
 sistema: Windows 7
 procesador: AMD Ryzen
-disp: False
+disp: disponible
 --------------
 serial: 0003
 marca: Toshiba
@@ -28,5 +28,5 @@ tamaño: 10 pulgadas
 precio: 40000
 sistema: Windows 11
 procesador: AMD Ryzen
-disp: False
+disp: disponible
 --------------

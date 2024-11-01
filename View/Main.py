@@ -35,7 +35,7 @@ while True:
     
     #OPCION 3
     elif respuesta == 3:
-        pass
+        mostrarInventario()
     
     #OPCION 4
     elif respuesta == 4:

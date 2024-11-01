@@ -316,4 +316,4 @@ def sobreEscribirBDEstDis(serial):
         for i in BDTablet:
             if i.getSerial() == serial:
                 i.setDisp("disponible") 
-        actualizarArchivo(BDTablet)
+        actualizarArchivoT(BDTablet)
