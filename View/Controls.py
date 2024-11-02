@@ -71,10 +71,47 @@ def devolverPestamoDis():
     result = EstDisController.devolverPrestamo()
     print(result)
 
-def mostrarInventario():        
-    for i in BDTablet:
-        if i.getSerial() == serial:
-          i.setDisp("disponible")
+def mostrarInventario():
+    # Rutas a los archivos de inventario
+    comp_path = current_dir / '../Model/InvComp.txt'
+    tablet_path = current_dir / '../Model/InvTablet.txt'
+
+    # Leer e imprimir inventario de computadores
+    print(f"\n{'-'*30}\n| INVENTARIO COMPUTADORES |\n{'-'*30}")
+    with comp_path.open('r', encoding='utf-8') as comp:
+        dispositivo = {}
+        for line in comp:
+            if line.strip() == "--------------":
+                # Muestra el dispositivo solo si está disponible
+                if dispositivo.get("disp") == "disponible":
+                    # Imprime todos los atributos excepto "disp"
+                    for i, valor in dispositivo.items():
+                        if i != "disp":
+                            print(f"{i}: {valor}")
+                    print("-" * 20) # separa cada dispositivo
+                dispositivo = {}
+            elif line:
+                i, valor = line.split(": ", 1)
+                dispositivo[i.strip()] = valor.strip()
+
+    # Leer e imprimir inventario de tablets
+    print(f"\n{'-'*30}\n| INVENTARIO TABLETS |\n{'-'*30}")
+    with tablet_path.open('r', encoding='utf-8') as tablet:
+        dispositivo = {}
+        for line in tablet:
+            if line.strip() == "--------------": 
+                # Muestra el dispositivo solo si está disponible
+                if dispositivo.get("disp") == "disponible":
+                    # Imprime todos los atributos excepto "disp"
+                    for i, valor in dispositivo.items():
+                        if i != "disp":
+                            print(f"{i}: {valor}")
+                    print("-" * 20) # separa cada dispositivo
+                dispositivo = {}
+            elif line:
+                i, valor = line.split(": ", 1)
+                dispositivo[i.strip()] = valor.strip()
+
 
 def modificarPrestamoDis():
     result = EstDisController.modificarPrestamo()
