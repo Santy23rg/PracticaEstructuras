@@ -102,7 +102,7 @@ class EstIngController():
                                     
                                     sobreEscribirBDEstIng(serial2)
                                 else:
-                                    return"\nLo siento no contamos con Tablets disponibles, intenta mas tarde\n"
+                                    return"\nLo siento no contamos con Computadores disponibles, intenta mas tarde\n"
                             else:
                                 print("¡Porfavor ingrese una opcion válida!")
                                 continue
