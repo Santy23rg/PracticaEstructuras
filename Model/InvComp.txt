@@ -4,7 +4,7 @@ tamaño: 10 pulgadas
 precio: 21000
 sistema: Windows 11
 procesador: Intel Core i5
-disp: False
+disp: disponible
 --------------
 serial: 0002
 marca: Huawei
@@ -20,7 +20,7 @@ tamaño: 15 pulgadas
 precio: 35000
 sistema: Windows 10
 procesador: Intel Core i5
-disp: disponible
+disp: False
 --------------
 serial: 0004
 marca: Samsung

@@ -51,7 +51,7 @@ class EstIngController():
                         sobreEscribirBDEstIng(serial)
                         return f"\nEl préstamo del estudiante {i.getNom()} ha sido eliminado.\n"
             else:
-                return "\nEl préstamo no ha sido eliminado"
+                return "\nEl préstamo no ha sido devuelto"
             
     def modificarPrestamo():
         cc = validar("Ingrese su CC o serial del computador:\n", "int")
@@ -66,7 +66,12 @@ class EstIngController():
             dec = int(validar("¿Desea modificar el préstamo?\n1.SI\n2.NO\n", "int"))
             if dec == 1:
                 while True:
-                    dec2 = int(input(f"\n¿Cual dato desea modificar?\n1.Nombre\n2.Apellido\n3.Teléfono\n4.Semestre\n5.Promedio\n6.Serial del equipo\n"))
+                    dec2 = int(validar(f"\n¿Cual dato desea modificar?\n1.Nombre\n2.Apellido\n3.Teléfono\n4.Semestre\n5.Promedio\n6.Serial del equipo\n", "int"))
+
+                    if dec2 not in range(1, 7):
+                        print("¡Porfavor ingrese una opción válida!")
+                        continue
+
                     for i in BDEstIng:
                         if i.getCed() == cc or i.getSerial() == cc:
                             if dec2 == 1:
@@ -103,10 +108,7 @@ class EstIngController():
                                     sobreEscribirBDEstIng(serial2)
                                 else:
                                     return"\nLo siento no contamos con Tablets disponibles, intenta mas tarde\n"
-                            else:
-                                print("¡Porfavor ingrese una opcion válida!")
-                                continue
                             sobreEscribirMod2()
                             return "\nEl préstamo se actualizó con éxito\n"
-                            
-                    break
+            else:
+                return "\nNo se modificó el prestamo\n"            
