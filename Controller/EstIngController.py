@@ -20,16 +20,25 @@ class EstIngController():
             return "\nEste estudiante ya tiene un prestamo en la facultad, debe devolverlo antes de poder hacer otro prestamo\n"
         
     def buscarEquipo(dato):
-        pass
-        # for i in BDEstIng:
-        #     if i.getCed() == dato or i.getSerial() == dato:
-        #         serial = i.getSerial()
-        #         print(f"\nPRESTAMO\nCC: {i.getCed()}\nNombre: {i.getNom()}")
-        #         break
-        # for i in BDComp:
-        #     if i.getSerial() == dato:
-        #         print(f"Marca: {i.getMarca()}\nSistema: {i.getSist()}\nProcesador: {i.getProce()}")
-        #         break
+        for i in BDEstIng:
+            if dato == i.getCed():
+                for j in BDComp:
+                    if j.getSerial() == i.getSerial():
+                        return f"\n------\nSerial: {j.getSerial()}\nMarca: {j.getMarca()}\nTamaño: {j.getTamano()}\nPrecio: {j.getPrecio()}\nProcesador: {j.getProce()}\nSistema Op: {j.getSist()}\n\nSe encuentra en prestamo del estudiante:\nCC: {i.getCed()}\nNombre: {i.getNom()} {i.getApe()}\n------\n"
+        for i in BDComp:
+            if dato == i.getSerial():
+                if i.getDisp(): 
+                    return f"\n------\nSerial: {i.getSerial()}\nMarca: {i.getMarca()}\nTamaño: {i.getTamano()}\nPrecio: {i.getPrecio()}\nProcesador: {i.getProce()}\nSistema Op: {i.getSist()}\n\nSe encuentra disponible para prestamo\n"
+                else:
+                    for j in BDEstIng:
+                        if i.getSerial() == j.getSerial():
+                            return f"\n------\nSerial: {i.getSerial()}\nMarca: {i.getMarca()}\nTamaño: {i.getTamano()}\nPrecio: {i.getPrecio()}\nProcesador: {i.getProce()}\nSistema Op: {i.getSist()}\n\nSe encuentra en prestamo del estudiante:\nCC: {j.getCed()}\nNombre: {j.getNom()}\n------\n"
+                    
+                    
+        
+        return "\n-----\nNo se encuentra ningun Equipo con el criterio ingresado\n-----\n"
+                
+            
 
     def devolverPrestamo():
         cc = validar("Ingrese su CC o seríal del computador:\n", "int") 

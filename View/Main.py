@@ -29,7 +29,7 @@ while True:
         elif respuesta == 3:
             devolverPestamoDis()
         elif respuesta == 4:
-            pass
+            buscarEquipoDis()
         elif respuesta == 5:
             continue
     

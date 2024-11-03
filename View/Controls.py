@@ -13,11 +13,11 @@ from EstDisController import *
 from EstIngController import *
 from TabletController import * 
 from CompController import * 
-# MENUS
 
+# MENUS
 def mainMenu():
-    print(f"{'-'*25}\n| Selecciona una Opcion |\n{'-'*25}")
     while True:
+        print(f"{'-'*25}\n| Selecciona una Opcion |\n{'-'*25}")
         try:
             respuesta = int(input("1. Ingenieria \n2. Diseño\n3. Imprimir Inventario\n4. Salir del Programa\n"))
             if respuesta in range(1,5):
@@ -32,8 +32,8 @@ def mainMenu():
     return respuesta
 
 def SecMenu():
-    print(f"{'-'*23}\n| Que deseas realizar |\n{'-'*23}")
     while True:
+        print(f"{'-'*23}\n| Que deseas realizar |\n{'-'*23}")
         try:
             respuesta = int(input("1. Registrar Prestamo de Equipo\n2. Modificar Prestamo\n3. Devolucion de Equipo\n4. Buscar Equipo\n5. Volver al menu principal\n"))
             if respuesta in range(1,6):
@@ -46,7 +46,10 @@ def SecMenu():
             print("¡Porfavor ingrese una opcion valida! \n")
         
     return respuesta
+###################################
 
+
+#REGISTRAR PRESTAMOS
 def registrarPrestamoDis():
     disp = TabletController.ListarDisp()
     if disp != []:
@@ -62,15 +65,32 @@ def registrarPrestamoIng():
         print(result)
     else:
         print("\nLo siento no contamos con Computadores disponibles, intenta mas tarde\n")
+###################################
 
+#BUSCAR EQUIPO
 def buscarEquipoIng():
     dato = input("Ingrese CC del estudiante o Serial del equipo:\n")
-    EstIngController.buscarEquipo(dato)
+    result = EstIngController.buscarEquipo(dato)
+    print(result)
+    
+def buscarEquipoDis():
+    dato = input("Ingrese CC del estudiante o Serial del equipo:\n")
+    result = EstDisController.buscarEquipo(dato)
+    print(result)
+###################################
 
+
+#DEVOLVER PRESTAMOS
 def devolverPestamoDis():
     result = EstDisController.devolverPrestamo()
     print(result)
+    
+def devolverPestamoIng():
+    result = EstIngController.devolverPrestamo()
+    print(result)
+###################################
 
+#MOSTRAR INVENTARIO
 def mostrarInventario():
     # Rutas a los archivos de inventario
     comp_path = current_dir / '../Model/InvComp.txt'
@@ -82,16 +102,15 @@ def mostrarInventario():
         dispositivo = {}
         for line in comp:
             if line.strip() == "--------------":
-                # Muestra el dispositivo solo si está disponible
-                if dispositivo.get("disp") == "disponible":
-                    # Imprime todos los atributos excepto "disp"
-                    for i, valor in dispositivo.items():
-                        if i != "disp":
-                            print(f"{i}: {valor}")
-                    print("-" * 20) # separa cada dispositivo
+                for i, valor in dispositivo.items():
+                    if i == "disp":
+                        print(f"{i}: {'disponible' if valor == 'disponible' else 'En Prestamo' }")
+                    else:
+                        print(f"{i}: {valor}")
+                print("-" * 20) # separa cada dispositivo
                 dispositivo = {}
             elif line:
-                i, valor = line.split(": ", 1)
+                i, valor = line.split(": ")
                 dispositivo[i.strip()] = valor.strip()
 
     # Leer e imprimir inventario de tablets
@@ -100,19 +119,18 @@ def mostrarInventario():
         dispositivo = {}
         for line in tablet:
             if line.strip() == "--------------": 
-                # Muestra el dispositivo solo si está disponible
-                if dispositivo.get("disp") == "disponible":
-                    # Imprime todos los atributos excepto "disp"
-                    for i, valor in dispositivo.items():
-                        if i != "disp":
-                            print(f"{i}: {valor}")
-                    print("-" * 20) # separa cada dispositivo
+                for i, valor in dispositivo.items():
+                    if i == "disp":
+                        print(f"{i}: {'disponible' if valor == 'disponible' else 'En Prestamo' }")
+                    else:
+                        print(f"{i}: {valor}")
+                print("-" * 20) # separa cada dispositivo
                 dispositivo = {}
             elif line:
-                i, valor = line.split(": ", 1)
+                i, valor = line.split(": ")
                 dispositivo[i.strip()] = valor.strip()
 
-
+#MODIFICAR PRESTAMOS
 def modificarPrestamoDis():
     result = EstDisController.modificarPrestamo()
     print(result)
@@ -120,8 +138,7 @@ def modificarPrestamoDis():
 def modificarPrestamoIng():
     result = EstIngController.modificarPrestamo()
     print(result)
+###################################
 
-def devolverPestamoIng():
-    result = EstIngController.devolverPrestamo()
-    print(result)
+
 

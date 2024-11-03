@@ -20,7 +20,7 @@ tamaño: 15 pulgadas
 precio: 20000
 almacenamiento: 512 GB
 peso: 2 Kg
-disp: disponible
+disp: False
 --------------
 serial: 0004
 marca: Mac

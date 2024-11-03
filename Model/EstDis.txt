@@ -1,0 +1,8 @@
+CC: 1234
+nombre: david
+apellido: lopes
+telefono: 555
+modalidad: Virtual
+asignaturas: 4
+serial: 0003
+--------------

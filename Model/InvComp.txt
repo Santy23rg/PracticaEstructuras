@@ -20,7 +20,7 @@ tamaño: 15 pulgadas
 precio: 35000
 sistema: Windows 10
 procesador: Intel Core i5
-disp: False
+disp: disponible
 --------------
 serial: 0004
 marca: Samsung
@@ -28,5 +28,5 @@ tamaño: 10 pulgadas
 precio: 40000
 sistema: Windows 11
 procesador: AMD Ryzen
-disp: disponible
+disp: False
 --------------

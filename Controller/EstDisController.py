@@ -18,6 +18,25 @@ class EstDisController():
             return "\nPrestamo Registrado Correctamente\n"
         else:
             return "\nEste estudiante ya tiene un préstamo en la facultad, debe devolverlo antes de poder hacer otro préstamo\n"
+        
+    def buscarEquipo(dato):
+        for i in BDEstDis:
+            if dato == i.getCed():
+                for j in BDTablet:
+                    if j.getSerial() == i.getSerial():
+                        return f"\n------\nSerial: {j.getSerial()}\nMarca: {j.getMarca()}\nTamaño: {j.getTamano()}\nPrecio: {j.getPrecio()}\nAlmacenamiento: {j.getAlmac()}\nPeso: {j.getPeso()}\n\nSe encuentra en prestamo del estudiante:\nCC: {i.getCed()}\nNombre: {i.getNom()} {i.getApe()}\n------\n"
+        for i in BDTablet:
+            if dato == i.getSerial():
+                if i.getDisp(): 
+                    return f"\n------\nSerial: {i.getSerial()}\nMarca: {i.getMarca()}\nTamaño: {i.getTamano()}\nPrecio: {i.getPrecio()}\nAlmacenamiento: {i.getAlmac()}\nPeso: {i.getPeso()}\n\nSe encuentra disponible para prestamo\n"
+                else:
+                    for j in BDEstDis:
+                        if i.getSerial() == j.getSerial():
+                            return f"\n------\nSerial: {i.getSerial()}\nMarca: {i.getMarca()}\nTamaño: {i.getTamano()}\nPrecio: {i.getPrecio()}\nAlmacenamiento: {i.getAlmac()}\nPeso: {i.getPeso()}\n\nSe encuentra en prestamo del estudiante:\nCC: {j.getCed()}\nNombre: {j.getNom()} {j.getApe()}\n------\n"
+                    
+                    
+        
+        return "\n-----\nNo se encuentra ningun Equipo con el criterio ingresado\n-----\n"
 
     def devolverPrestamo():
         cc = validar("Ingrese su CC o seríal de la tablet:\n", "int")
