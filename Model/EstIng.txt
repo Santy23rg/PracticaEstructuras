@@ -1,8 +1,0 @@
-CC: 123
-nombre: santi
-apellido: roldan
-telefono: 12345
-semestre: 010
-promedio: 2.4
-serial: 0004
---------------

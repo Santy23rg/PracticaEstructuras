@@ -28,5 +28,5 @@ tamaño: 10 pulgadas
 precio: 40000
 sistema: Windows 11
 procesador: AMD Ryzen
-disp: False
+disp: disponible
 --------------
